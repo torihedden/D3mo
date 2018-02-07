@@ -1,0 +1,8 @@
+p.bar {
+  display: inline-block;
+  width: 50px;
+  height: 75px;   /* We'll override this later */
+  background-color: lightblue;
+  vertical-align: bottom;
+  margin-right: 2px;
+}
