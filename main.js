@@ -1,6 +1,19 @@
-var statusData = [17.5];
+var statusData = [percentage];
+var percentage = spoofStatus(0);
 var statusWidth = 600;
-var statusHeight = 100;
+var statusHeight = 50;
+
+function spoofStatus (num) {
+  console.log(num);
+
+  setTimeout(function() {
+    if (num < 100) {
+      num += 20;
+      createStatusBar(num);
+      spoofStatus(num);
+    }
+  }, 1000);
+}
 
 var statusSvg = d3.select('body')
   .append('svg')
@@ -9,13 +22,19 @@ var statusSvg = d3.select('body')
   .classed('status-bar', true)
   .style('background-color', 'gray')
 
-statusSvg.selectAll('rect')
-  .data(statusData)
-  .enter()
-  .append('rect')
-  .attr('fill', 'lightgreen')
-  .attr('height', 100)
-  .attr('width', ((statusData /  100) * statusWidth))
+function createStatusBar (percentage) {
+  console.log('status is: ' + percentage);
+  d3.select('.current-status').remove();
+
+  statusSvg.selectAll('rect')
+    .data(statusData)
+    .enter()
+    .append('rect')
+    .classed('current-status', true)
+    .attr('fill', 'lightgreen')
+    .attr('height', statusHeight)
+    .attr('width', ((percentage /  100) * statusWidth))
+}
 
 statusSvg.selectAll('text')
   .data(statusData)
@@ -30,7 +49,7 @@ statusSvg.selectAll('text')
   .attr("font-size", "11px")
   .attr("fill", "red")
 
-  var rectDataset = [ 20, 10, 5, 15, 20, 30, 5, 45, 20, 25, 5, 45 ];
+  var rectDataset = [ 20, 10, 5, 15, 20, 30, 20, 15, 5, 45, 20, 25, 5, 45, 20, 25 ];
   var rectSvgWidth = 600;
   var rectSvgHeight = 250;
   var barPadding = 5;
