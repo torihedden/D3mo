@@ -1,16 +1,19 @@
 var statusData = [percentage];
 var percentage = spoofStatus(0);
-var statusWidth = 600;
+var statusWidth = window.innerWidth - 15;
 var statusHeight = 50;
 
-function spoofStatus (num) {
-  console.log(num);
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
+function spoofStatus (n) {
   setTimeout(function() {
-    if (num < 100) {
-      num += 20;
-      createStatusBar(num);
-      spoofStatus(num);
+    if (n < 100) {
+      // adding randomization to look even more like a loading status bar
+      n += getRandomInt(20);
+      createStatusBar(n);
+      spoofStatus(n);
     }
   }, 1000);
 }
@@ -23,7 +26,8 @@ var statusSvg = d3.select('body')
   .style('background-color', 'gray')
 
 function createStatusBar (percentage) {
-  console.log('status is: ' + percentage);
+
+  // This line here is the secret sauce. You must destroy the old SVG and create a new one in order to see the updated status
   d3.select('.current-status').remove();
 
   statusSvg.selectAll('rect')
@@ -48,6 +52,7 @@ statusSvg.selectAll('text')
   .attr("font-family", "sans-serif")
   .attr("font-size", "11px")
   .attr("fill", "red")
+  
 
   var rectDataset = [ 20, 10, 5, 15, 20, 30, 20, 15, 5, 45, 20, 25, 5, 45, 20, 25 ];
   var rectSvgWidth = 600;
