@@ -39,16 +39,3 @@ function createStatusBar (percentage) {
     .attr('height', statusHeight)
     .attr('width', ((percentage /  100) * statusWidth))
 }
-
-statusSvg.selectAll('text')
-  .data(statusData)
-  .enter()
-  .append('text')
-  .text(function(d) {
-    return 'current status: ' + d + '%';
-  })
-  .attr('x', 20)
-  .attr('y', 20)
-  .attr("font-family", "sans-serif")
-  .attr("font-size", "11px")
-  .attr("fill", "red")
