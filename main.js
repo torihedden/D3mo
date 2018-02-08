@@ -11,6 +11,7 @@ var statusSvg = d3.select('body')
 
 function runStatusBarDemo () {
 
+  var clearPreviousStatusBar = clearPreviousStatusBar();
   var disableButton = disableDemoButton();
   var statusData = [percentage];
   var percentage = spoofStatus(0);
@@ -21,6 +22,10 @@ function runStatusBarDemo () {
 
   function reenableDemoButton () {
     document.getElementById('status-bar-button').removeAttribute('disabled');
+  }
+
+  function clearPreviousStatusBar () {
+    d3.select('.current-status').remove();
   }
 
   function spoofStatus (n) {
