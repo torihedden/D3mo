@@ -2,7 +2,7 @@ document.getElementById('status-bar-button').addEventListener('click', runStatus
 
 var statusWidth = window.innerWidth - 15;
 var statusHeight = 50;
-var statusSvg = d3.select('body')
+var statusSvg = d3.select('#svg-status-bar')
   .append('svg')
   .attr('width', statusWidth)
   .attr('height', statusHeight)
@@ -11,10 +11,20 @@ var statusSvg = d3.select('body')
 
 function runStatusBarDemo () {
 
+  var clearStatusMessage = toggleStatusMessage(0);
   var clearPreviousStatusBar = clearPreviousStatusBar();
   var disableButton = disableDemoButton();
   var statusData = [percentage];
   var percentage = spoofStatus(0);
+
+  function toggleStatusMessage (n) {
+    var div = document.getElementById('status-text');
+    if (div.innerHTML && n < 100) {
+      div.innerHTML = '';
+    } else if (!div.innerHTML && n >= 100) {
+      div.innerHTML = 'Done!';
+    }
+  }
 
   function disableDemoButton () {
     document.getElementById('status-bar-button').setAttribute('disabled', true);
@@ -31,11 +41,12 @@ function runStatusBarDemo () {
   function spoofStatus (n) {
     setTimeout(function() {
       if (n < 100) {
-        n += getRandomInt(20);
+        n += getRandomInt(25);
         createStatusBar(n);
         spoofStatus(n);
       } else {
         reenableDemoButton();
+        toggleStatusMessage(n);
       }
     }, 1000);
   }
