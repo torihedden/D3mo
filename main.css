@@ -14,3 +14,7 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
+
+#status-text {
+  height: 18px;
+}
