@@ -23,3 +23,12 @@ button:disabled {
   font-size: 15px;
   margin-bottom: 15px;
 }
+
+#slider {
+  width: 75%;
+  margin-left: 8px;
+}
+
+#slider-value {
+  font-size : 30px;
+}
