@@ -7,7 +7,7 @@ var statusSvg = d3.select('#svg-status-bar')
   .attr('width', statusWidth)
   .attr('height', statusHeight)
   .classed('status-bar', true)
-  .style('background-color', 'gray');
+  .style('background-color', 'lightgray');
 
 function runStatusBarDemo () {
 
@@ -62,7 +62,7 @@ function runStatusBarDemo () {
       .enter()
       .append('rect')
       .classed('current-status', true)
-      .attr('fill', 'lightgreen')
+      .attr('fill', '#2FBF71')
       .attr('height', statusHeight)
       .attr('width', ((percentage /  100) * statusWidth));
   }

@@ -1,11 +1,11 @@
 var data = [
-	{name: 'Complete', value: 44.10, color: 'green'},
-	{name: 'In progress', value: 32.51, color: 'yellow'},
-  {name: 'Blocked', value: 5, color: 'red'},
-	{name: 'Backlog', value: 18.39, color: 'lightgray'}
+	{name: 'Complete', value: 26, color: '#2FBF71'},
+	{name: 'In progress', value: 32, color: '#348AA7'},
+  {name: 'Blocked', value: 5, color: '#EAC435'},
+	{name: 'Backlog', value: 38, color: '#d3d3d3'}
 ];
 
-// var colors = ['green', 'yellow', 'red', 'lightgray'];
+var colors = ['#2FBF71', '#348AA7', '#EAC435', '#d3d3d3'];
 
 var text = '';
 
@@ -15,7 +15,11 @@ var thickness = 60;
 var duration = 750;
 
 var radius = Math.min(width, height) / 2;
-// var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+function darkenColor(color, percent) {
+  var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+  return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+}
 
 var svg = d3.select('#donut-chart')
             .append('svg')
@@ -24,14 +28,14 @@ var svg = d3.select('#donut-chart')
             .attr('height', height);
 
 var g = svg.append('g')
-           .attr('transform', 'translate(' + (width/2) + ',' + (height/2) + ')');
+           .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')');
 
 var arc = d3.arc()
             .innerRadius(radius - thickness)
             .outerRadius(radius);
 
 var pie = d3.pie()
-            .value(function(d) {
+            .value(d => {
               return d.value;
             })
             .sort(null);
@@ -55,28 +59,27 @@ var path = g.selectAll('path')
 
               g.append("text")
                 .attr("class", "value-text")
-                .text(Math.round(d.data.value) + '%')
+                .text(`${d.data.value}%`)
                 .attr('text-anchor', 'middle')
                 .attr('dy', '.6em');
               })
-            .on("mouseout", function(d) {
+            .on("mouseout", function(d, i) {
               d3.select(this)
-                .style("cursor", "none")
-                .style("fill", colors[this._current])
                 .select(".text-group").remove();
               })
             .append('path')
             .attr('d', arc)
-            // .attr('fill', (d,i) => color(i))
-            .on("mouseover", function(d) {
+            .attr('fill', (d, i) => colors[i])
+						.attr('class', 'donut-chart-segment')
+            .on("mouseover", function(d, i) {
+							console.log('mouse77');
               d3.select(this)
                 .style("cursor", "pointer")
-                .style("fill", "black");
+                .style("fill", darkenColor(colors[i], -0.3));
               })
-            .on("mouseout", function(d) {
+            .on("mouseout", function(d, i) {
               d3.select(this)
-                .style("cursor", "none")
-                .style("fill", colors[this._current]);
+                .style("fill", colors[i]);
               })
             .each(function(d, i) { this._current = i; });
 

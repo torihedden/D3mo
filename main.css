@@ -18,3 +18,8 @@ button:disabled {
 #status-text {
   height: 18px;
 }
+
+.hints {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
