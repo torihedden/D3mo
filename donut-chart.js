@@ -1,4 +1,6 @@
-var data = [
+(function () {
+
+var donutData = [
 	{name: 'Complete', value: 26},
 	{name: 'In progress', value: 32},
   {name: 'Blocked', value: 5},
@@ -41,10 +43,10 @@ var pie = d3.pie()
             .sort(null);
 
 var path = g.selectAll('path')
-            .data(pie(data))
+            .data(pie(donutData))
             .enter()
-            .append("g")
-            .on("mouseover", function(d) {
+            .append('g')
+            .on('mouseover', function(d) {
               let g = d3.select(this)
                 .style("cursor", "pointer")
                 .style("fill", "black")
@@ -87,3 +89,5 @@ g.append('text')
   .attr('text-anchor', 'middle')
   .attr('dy', '.35em')
   .text(text);
+
+} ())
