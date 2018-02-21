@@ -1,8 +1,8 @@
 var data = [
-	{name: 'Complete', value: 26, color: '#2FBF71'},
-	{name: 'In progress', value: 32, color: '#348AA7'},
-  {name: 'Blocked', value: 5, color: '#EAC435'},
-	{name: 'Backlog', value: 38, color: '#d3d3d3'}
+	{name: 'Complete', value: 26},
+	{name: 'In progress', value: 32},
+  {name: 'Blocked', value: 5},
+	{name: 'Backlog', value: 38}
 ];
 
 var colors = ['#2FBF71', '#348AA7', '#EAC435', '#d3d3d3'];
@@ -72,7 +72,6 @@ var path = g.selectAll('path')
             .attr('fill', (d, i) => colors[i])
 						.attr('class', 'donut-chart-segment')
             .on("mouseover", function(d, i) {
-							console.log('mouse77');
               d3.select(this)
                 .style("cursor", "pointer")
                 .style("fill", darkenColor(colors[i], -0.3));
