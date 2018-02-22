@@ -7,7 +7,7 @@ var donutData = [
 	{name: 'Backlog', value: 38}
 ];
 
-var colors = ['#2FBF71', '#348AA7', '#EAC435', '#d3d3d3'];
+var colors = [green, blue, yellow, gray];
 
 var text = '';
 
