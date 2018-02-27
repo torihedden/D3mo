@@ -38,13 +38,13 @@ function createBubbleChart (data) {
                       .data(bubbleData, function(d, i) { return d; });
 
       circle.enter().append("circle")
-                    .attr("cy", function(d, i) {
-                      console.log(bubbleData[i])
-                      return 50;
-                    })
-                    .attr("cx", 25)
-                    .attr("r", function(d, i) { return (d.views / 10) / 2; })
-                    .attr('text', function(d, i) { return d.title; });
+                    .attr("cy", function (d, i) { return 250 - (i * 20); })
+                    .attr("cx", function (d, i) { return 250 - (i * 20); })
+                    .attr("r", function(d, i) { return d.views / 100; })
+                    .attr('text', function(d, i) {
+                      console.log(i);
+                      return d.title;
+                    });
 }
 // ----
 // var data = selection.enter().data();
