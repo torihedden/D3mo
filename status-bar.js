@@ -1,6 +1,6 @@
 document.getElementById('status-bar-button').addEventListener('click', runStatusBarDemo);
 
-var statusWidth = window.innerWidth / 2;
+var statusWidth = 350;
 var statusHeight = 50;
 var statusSvg = d3.select('#svg-status-bar')
   .append('svg')

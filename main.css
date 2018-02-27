@@ -2,13 +2,36 @@ body {
   font-family: sans-serif;
 }
 
+.demo-wrapper {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0 15px 15px 15px;
+  vertical-align: top;
+  min-height: 400px;
+  width: 50%;
+}
+
+@media only screen and (max-width: 750px) {
+  .demo-wrapper {
+    width: 100%;
+  }
+}
+
+
+div#donut-chart, div#slider-donut-chart {
+  height: 260px;
+}
+
+.demo-sub-header {
+  min-height: 50px;
+}
+
 button {
   background-color: white;
   border: solid 1px lightgray;
   font-size: 15px;
   padding: 10px;
   border-radius: 5px;
-  margin-bottom: 15px;
 }
 
 button:disabled {
@@ -21,12 +44,10 @@ button:disabled {
 
 .hints {
   font-size: 15px;
-  margin-bottom: 15px;
 }
 
 #slider {
   width: 75%;
-  margin-left: 8px;
 }
 
 #slider-value {

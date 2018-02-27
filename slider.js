@@ -59,9 +59,10 @@ function buildDonutChart(sliderDonutData, val) {
               .append('path')
               .attr('d', arc)
               .attr('fill', d => d.data.color)
-  						.attr('class', 'slider-segment')
-              .each(function(d, i) { this._current = i; });
-
+  						.attr('class', d => { return 'slider-segment-' + d.data.name })
+              // I don't know what this line is for and I don't know why it made it's way into here
+              // I don't seem to need it
+              // .each(function(d, i) { this._current = i; });
 
   g.append('text')
     .attr('text-anchor', 'middle')

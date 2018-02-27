@@ -1,7 +1,7 @@
 (function () {
 
 var donutData = [
-	{name: 'Complete', value: 26},
+	{name: 'Complete', value: 25},
 	{name: 'In progress', value: 32},
   {name: 'Blocked', value: 5},
 	{name: 'Backlog', value: 38}
