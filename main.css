@@ -1,5 +1,7 @@
 body {
   font-family: sans-serif;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .demo-wrapper {
@@ -9,6 +11,7 @@ body {
   vertical-align: top;
   min-height: 400px;
   width: 50%;
+  margin-bottom: 30px;
 }
 
 @media only screen and (max-width: 750px) {
@@ -48,8 +51,21 @@ button:disabled {
 
 #slider {
   width: 75%;
+  margin-top: 15px;
 }
 
 #slider-value {
   font-size : 30px;
+}
+
+circle.design {
+  fill: #2FBF71;
+}
+
+circle.development {
+  fill: #348AA7;
+}
+
+circle.data-science {
+  fill: #EAC435;
 }

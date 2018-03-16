@@ -14,10 +14,13 @@
   <div class="demo-wrapper">
     <h2>Slider-Dependent Chart</h2>
     <div class="demo-sub-header">
-      <div id="slider"></div>
-      <div id="slider-value"></div>
+      <div class="hints">Move the slider to change the chart percentage</div>
+      <br>
+
     </div>
     <div id="slider-donut-chart"></div>
+    <div id="slider"></div>
+    <div id="slider-value"></div>
   </div><!--
 
   --><div class="demo-wrapper">
@@ -29,22 +32,21 @@
   </div><!--
 
   --><div class="demo-wrapper">
+    <h2>Bubble Chart</h2>
+    <div class="demo-sub-header">
+      <div class="hints">Hover over nodes for details</div>
+      <div id="bubble-chart"></div>
+    </div>
+  </div><!--
+
+  --><div class="demo-wrapper">
     <h2>Mock Loading Status Bar</h2>
     <div class="demo-sub-header">
       <button type="button" name="button" id="status-bar-button">Run demo</button>
     </div>
     <div id="svg-status-bar"></div>
     <div id="status-text" class="hints"></div>
-  </div><!--
-
-  -->
-  <!-- <div class="demo-wrapper">
-    <h2>Bubble Chart</h2>
-    <div class="demo-sub-header">
-      <div class="hints">bubble chart using CSV data</div>
-      <div id="bubble-chart"></div>
-    </div>
-  </div> -->
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -53,7 +55,7 @@
   <script src="status-bar.js"></script>
   <script src="donut-chart.js"></script>
   <script src="slider.js"></script>
-  <!-- <script src="bubble-chart.js"></script> -->
+  <script src="bubble-chart-v4.js"></script>
 </body>
 
 </html>

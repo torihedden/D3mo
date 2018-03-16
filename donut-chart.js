@@ -1,5 +1,3 @@
-(function () {
-
 var donutData = [
 	{name: 'Complete', value: 25},
 	{name: 'In progress', value: 32},
@@ -7,7 +5,7 @@ var donutData = [
 	{name: 'Backlog', value: 38}
 ];
 
-var colors = [green, blue, yellow, gray];
+const colors = [green, blue, yellow, gray];
 
 var text = '';
 
@@ -37,9 +35,7 @@ var arc = d3.arc()
             .outerRadius(radius);
 
 var pie = d3.pie()
-            .value(d => {
-              return d.value;
-            })
+            .value(d => d.value)
             .sort(null);
 
 var path = g.selectAll('path')
@@ -82,12 +78,9 @@ var path = g.selectAll('path')
               d3.select(this)
                 .style("fill", colors[i]);
               })
-            .each(function(d, i) { this._current = i; });
 
 
 g.append('text')
   .attr('text-anchor', 'middle')
   .attr('dy', '.35em')
   .text(text);
-
-} ())
