@@ -1,12 +1,11 @@
 var bubbleData = null;
 
-d3.csv('data/medium_january.csv', function(error, data) {
+d3.csv('data/medium_january.csv', (error, data) => {
   if (error) {
     console.error('Error getting or parsing the data.');
     throw error;
   } else {
     bubbleData = data;
-    console.log(bubbleData);
     createBubbleChart(data);
   }
 });
@@ -18,57 +17,20 @@ var width = 960,
     columnForRadius = 'views';
 
 function createBubbleChart (data) {
-  // d3.select('#bubble-chart')
-  //   .selectAll('div')
-  //   .data(data)
-  //   .enter().append('div')
-  //   .style('width', 200)
-  //   .style('border', 'solid 1px blue')
-  //   .text((d) => d.title)
 
-    var svg = d3.select('#bubble-chart')
-      // .selectAll('svg')
-      // .data(bubbleData)
-      .append('svg')
-      .attr('width', 500)
-      .attr('height', 500)
-      .attr('style', 'border: solid 1px red;')
+  var svg = d3.select('#bubble-chart')
+    .append('svg')
+    .attr('width', 500)
+    .attr('height', 500)
+    .attr('style', 'border: solid 1px red;')
 
-      var circle = svg.selectAll('circle')
-                      .data(bubbleData, function(d, i) { return d; });
+    var circle = svg.selectAll('circle')
+                    .data(bubbleData, (d, i) => d);
 
-      circle.enter().append('circle')
-                    .attr('cy', function (d, i) { return 150 + (i * 25); })
-                    .attr('cx', function (d, i) { return 150 + (i * 25); })
-                    .attr('r', function(d, i) { return d.views / 100; })
-                    .attr('text', function(d, i) {
-                      // console.log(i);
-                      return d.title;
-                    })
-                    .attr('fill', function(d, i) {
-                      console.log(d[i]);
-                      return 'rgb(0, 0, ' + (i * 20) + ')';
-                    });
+    circle.enter().append('circle')
+                  .attr('cy', (d, i) => 70 + (i * 25))
+                  .attr('cx', (d, i) => 80)
+                  .attr('r',  (d, i) => d.views / 100)
+                  .attr('text', (d, i) => d.title)
+                  .attr('class', d => d.category.toLowerCase().replace(/ /g, '-'))
 }
-// ----
-// var data = selection.enter().data();
-//         var div = selection,
-//             svg = div.selectAll('svg');
-//         svg.attr('width', width).attr('height', height);
-
-// var svg = d3.select('#bubbles')
-//             .append('svg')
-//             .attr('width', 200)
-//             .attr('height', 200)
-//             .attr('style', 'border: solid 1px red;')
-
-// var circle = svg.selectAll('circle')
-//                 .data(circleData, function(d) { return d; });
-
-// circle.enter().append('circle')
-//               .attr('cy', 50)
-//               .attr('cx', 25)
-//               .attr('r', 25);
-
-              // .attr('cx', function(d, i) { return d; })
-              // .attr('r', function(d) { return d / 5; });

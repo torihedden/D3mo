@@ -69,3 +69,8 @@ circle.development {
 circle.data-science {
   fill: #EAC435;
 }
+
+div.hover-text {
+  border: solid 2px red;
+  z-index: 999;
+}
