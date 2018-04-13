@@ -50,14 +50,16 @@ function makeBubbleChart(data) {
           svg.append('text')
           .attr('class', 'hover-text')
           .text(() => {
-            return `${d.data.title}`;
+            // TODO add formatting here
+            return `${(d.data.title.slice(0, 40)).trim()}...`;
           })
           .style('cursor', 'none')
           .style('fill', 'black')
           .attr('text-anchor', 'middle')
-          .attr('dy', '100%')
+          .attr('dy', '90%')
           .attr('dx', '50%')
-          .attr('font-size', '12px')
+          .attr('font-size', '15px')
+          .attr('height', '50px')
         }
       })
 
